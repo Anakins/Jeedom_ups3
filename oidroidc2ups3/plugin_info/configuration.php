@@ -27,7 +27,7 @@ if (!isConnect()) {
 	
 	<span>
         <div class="form-group"> <br>
-           <a href="https://github.com/Anakins/jeedom_horoscope" target="_blank"><font size="+1"><center>Cliquer pour voir la documentation du plugin</center></font></a>
+           <a href="https://github.com/Anakins/jeedom_ups3" target="_blank"><font size="+1"><center>Cliquer pour voir la documentation du plugin</center></font></a>
        </div>
 	</span>
         <div class="form-group"> <br>
@@ -37,10 +37,8 @@ if (!isConnect()) {
               <select id="frequence" class="configKey form-control"  data-l1key="frequence" >
               
               
-              <option value="5h">{{à 5H00 du matin (conseillé)}}</option>
-			  <option value="1h">{{Toutes les 1 heure}}</option>
-			  <option value="minuit">{{à minuit}}</option>
-			  <option value="1min">{{Toutes les 1 minute (pour les tests)}}</option>
+             
+			  <option value="1min">{{Toutes les 1 minute (par défaut)}}</option>
                </select>
           </div>
         </div>

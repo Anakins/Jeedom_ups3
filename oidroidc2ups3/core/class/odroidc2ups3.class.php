@@ -21,7 +21,8 @@ require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 
 class odroidc2ups3 extends eqLogic {
 
-   
+    
+    public static $_url_template = 'http://www.asiaflash.com/horoscope/rss_horojour_%s.xml';
 
     public static $_widgetPossibility = array('custom' => true);
 
@@ -32,9 +33,15 @@ class odroidc2ups3 extends eqLogic {
 
     /*     * ***********************Methode static*************************** */
 
+    /**
+     * Recupere la liste des signes disponibles
      */
-  
+    public static function getSignes() {
+        return self::$_signes;
+    }
 
+
+    
     /**
      * Fonction exécutée automatiquement toutes les minutes par Jeedom
      */
@@ -42,24 +49,73 @@ class odroidc2ups3 extends eqLogic {
         $today = date('H');
         $frequence = config::byKey('frequence', 'odroidc2ups3');
        
-
+		
+		
         if ($frequence == '1min') {
             
-			
-			log::add('odroidc2ups3', 'debug', 'Position : Fin de boucle pour chaque équipement');
+			log::add('odroidc2ups3', 'info', '<----------------- MISE A JOUR DE L\'ETAT DE L\'UPS3 ----------------->');
+			log::add('odroidc2ups3', 'debug', '.');
+			log::add('odroidc2ups3', 'debug', '====> Position : Début de la boucle pour chaque équipement');
+            foreach (eqLogic::byType('odroidc2ups3', true) as $mi_odroidc2ups3) {
+                //log::add('odroidc2ups3', 'debug', 'Après chaque élément');
+
+                //Procédure de calcul de l odroidc2ups3
+				
+                $mi_odroidc2ups3->updateEtat();
+				log::add('odroidc2ups3', 'debug', 'MISE A JOUR DU WIDGET');
+				
+                $mi_odroidc2ups3->refreshWidget();
+				
+            }
+			log::add('odroidc2ups3', 'debug', '====> Position : Fin de boucle pour chaque équipement');
+			log::add('odroidc2ups3', 'debug', '.');
         }
     }
 
      // Fonction exécutée automatiquement toutes les heures par Jeedom
     public static function cronHourly() {
-     
-	}
-	
+      
+    }
 
     /*     * *********************Méthodes d'instance************************* */
 
-    
-    
+    /**
+     * Recuperer l'odroidc2ups3 du jour et met à jour les commandes
+     */
+    public function updateodroidc2ups3() {
+        		log::add('odroidc2ups3', 'debug', '.');
+				log::add('odroidc2ups3', 'debug', 'Modification de l\'équipement : '.$this->getName().'.');
+				
+		
+        
+		log::add('odroidc2ups3', 'debug', '.');
+    }
+
+    /**
+     * Met a jour la commande contenant le signe configure
+     */
+    public function updateEtat() {
+        
+		 //$pid=trim( shell_exec ('ps ax | grep "apcups" | grep -v "grep" | wc -l'));
+		 $resultat=shell_exec ('sh /var/www/html/plugins/odroidc2ups3/3rparty/ups3.sh');
+		log::add('odroidc2ups3', 'debug', 'resultat :'.$resultat);
+        log::add('odroidc2ups3', 'debug', 'ETAT DE LA BATTERIE : '.$resultat);
+		
+        $odroidc2ups3Cmd = $this->getCmd(null, 'Etat');
+        if (!is_object($odroidc2ups3Cmd)) {
+            $odroidc2ups3Cmd = new odroidc2ups3Cmd();
+            $odroidc2ups3Cmd->setName(__('Etat', __FILE__));
+            $odroidc2ups3Cmd->setEqLogic_id($this->getId());
+            $odroidc2ups3Cmd->setLogicalId('Etat');
+            $odroidc2ups3Cmd->setIsVisible(false);
+            $odroidc2ups3Cmd->setEqType('odroidc2ups3');
+            $odroidc2ups3Cmd->setType('info');
+            $odroidc2ups3Cmd->setSubType('string');
+            $odroidc2ups3Cmd->setIsHistorized(1);
+            $odroidc2ups3Cmd->save();
+        }
+        $odroidc2ups3Cmd->event($resultat);
+    }
 
     public function preInsert() {
 
@@ -74,16 +130,23 @@ class odroidc2ups3 extends eqLogic {
     }
 
     public function postSave() {
-        $this->updateSigne();
+        $this->updateEtat();
     }
 
     public function preUpdate() {
-       
+      
+	  
+	   $freq = config::byKey('frequence', 'odroidc2ups3');
+        if ($freq == '') {
+            log::add('odroidc2ups3', 'debug', 'preUpdate: La fréquence n\'a pas été enregistrée dans le menu configuration du plugin.');
+            throw new Exception(__("La fréquence n'a pas été enregistrée dans le menu configuration du plugin.", __FILE__));
+        }
+		
     }
 
     public function postUpdate()
     {
-        //$this->updateodroidc2ups3();
+        $this->updateodroidc2ups3();
     }
 
 

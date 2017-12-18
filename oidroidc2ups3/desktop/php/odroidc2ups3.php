@@ -2,16 +2,16 @@
 if (!isConnect('admin')) {
     throw new Exception('{{401 - Accès non autorisé}}');
 }
-$plugin = plugin::byId('odroidc2up3s');
-sendVarToJS('eqType', 'odroidc2up3s');
-$eqLogics = eqLogic::byType('odroidc2up3s');
+$plugin = plugin::byId('odroidc2ups3');
+sendVarToJS('eqType', 'odroidc2ups3');
+$eqLogics = eqLogic::byType('odroidc2ups3');
 ?>
 
 <div class="row row-overflow">
     <div class="col-lg-2 col-md-3 col-sm-4">
         <div class="bs-sidebar">
             <ul id="ul_eqLogic" class="nav nav-list bs-sidenav">
-                <a class="btn btn-default eqLogicAction" style="width : 100%;margin-top : 5px;margin-bottom: 5px;" data-action="add"><i class="fa fa-plus-circle"></i> {{Ajouter une batterie}}</a>
+                <a class="btn btn-default eqLogicAction" style="width : 100%;margin-top : 5px;margin-bottom: 5px;" data-action="add"><i class="fa fa-plus-circle"></i> {{Ajouter un odroidc2ups3}}</a>
                 <li class="filter" style="margin-bottom: 5px;"><input class="filter form-control input-sm" placeholder="{{Rechercher}}" style="width: 100%"/></li>
 <?php foreach ($eqLogics as $eqLogic) : ?>
                 <li class="cursor li_eqLogic" data-eqLogic_id="<?= $eqLogic->getId() ?>"><a><?= $eqLogic->getHumanName(true) ?></a></li>
@@ -21,7 +21,7 @@ $eqLogics = eqLogic::byType('odroidc2up3s');
     </div>
 
     <div class="col-lg-10 col-md-9 col-sm-8 eqLogicThumbnailDisplay" style="border-left: solid 1px #EEE; padding-left: 25px;">
-        <legend>{{Mes batteries}}
+        <legend>{{Mes odroidc2ups3s}}
         </legend>
         <legend><i class="fa fa-cog"></i>  {{Gestion}}</legend>
         <div class="eqLogicThumbnailContainer">
@@ -40,7 +40,7 @@ $eqLogics = eqLogic::byType('odroidc2up3s');
             </div>
         </div>
 
-        <legend><i class="fa fa-table"></i> {{Mes batteries}}</legend>
+        <legend><i class="fa fa-table"></i> {{Mes odroidc2ups3s}}</legend>
         <div class="eqLogicThumbnailContainer">
 <?php foreach ($eqLogics as $eqLogic) : $opacity = ($eqLogic->getIsEnable()) ? '' : jeedom::getConfiguration('eqLogic:style:noactive'); ?>
             <div class="eqLogicDisplayCard cursor" data-eqLogic_id="<?= $eqLogic->getId() ?>" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px; <?= $opacity ?>">
@@ -68,7 +68,7 @@ $eqLogics = eqLogic::byType('odroidc2up3s');
         			<fieldset>
         				<legend><i class="fa fa-arrow-circle-left eqLogicAction cursor" data-action="returnToThumbnailDisplay"></i> {{Général}}  <i class='fa fa-cogs eqLogicAction pull-right cursor expertModeVisible' data-action='configure'></i></legend>
         				<div class="form-group">
-        					<label class="col-sm-3 control-label">{{Nom de la batterie}}</label>
+        					<label class="col-sm-3 control-label">{{Nom de la personne}}</label>
         					<div class="col-sm-3">
         						<input type="text" class="eqLogicAttr form-control" data-l1key="id" style="display : none;" />
         						<input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="{{Nom de la personne}}"/>
@@ -86,7 +86,6 @@ $eqLogics = eqLogic::byType('odroidc2up3s');
         					</div>
         				</div>
 
-        			
 
         				<div class="form-group">
         					<label class="col-sm-3 control-label" >{{Activer}}</label>
@@ -117,5 +116,5 @@ $eqLogics = eqLogic::byType('odroidc2up3s');
     </div>
 </div>
 
-<?php include_file('desktop', 'odroidc2up3s', 'js', 'odroidc2up3s');?>
-<?php include_file('core', 'plugin.odroidc2up3s', 'js');?>
+<?php include_file('desktop', 'odroidc2ups3', 'js', 'odroidc2ups3');?>
+<?php include_file('core', 'plugin.template', 'js');?>

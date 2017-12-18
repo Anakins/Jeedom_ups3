@@ -18,16 +18,16 @@
 
 require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
-function horoscope_install() {
+function odroidc2ups3_install() {
 
 }
 
-function horoscope_update() {
+function odroidc2ups3_update() {
 
 }
 
 
-function horoscope_remove() {
+function odroidc2ups3_remove() {
 
 }
 
