@@ -22,7 +22,6 @@ require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 class odroidc2ups3 extends eqLogic {
 
     
-    public static $_url_template = 'http://www.asiaflash.com/horoscope/rss_horojour_%s.xml';
 
     public static $_widgetPossibility = array('custom' => true);
 
@@ -72,11 +71,12 @@ class odroidc2ups3 extends eqLogic {
         }
     }
 
+		/*
      // Fonction exécutée automatiquement toutes les heures par Jeedom
     public static function cronHourly() {
       
     }
-
+*/
     /*     * *********************Méthodes d'instance************************* */
 
     /**
@@ -132,6 +132,7 @@ class odroidc2ups3 extends eqLogic {
 		 
 		 if ($resultat=='')
 		 {
+			log::add('odroidc2ups3', 'debug', '====> La batterie n\'a pas été détectée.');
 			// Lancement de la commande shell pour récupérer l'état de la batterie.
 			$resultat='BATTERIE NON PRESENTE';
 		 }
@@ -157,7 +158,7 @@ class odroidc2ups3 extends eqLogic {
             $odroidc2ups3Cmd->setEqType('odroidc2ups3');
             $odroidc2ups3Cmd->setType('info');
             $odroidc2ups3Cmd->setSubType('string');
-            $odroidc2ups3Cmd->setIsHistorized(1);
+            $odroidc2ups3Cmd->setIsHistorized(0);
             $odroidc2ups3Cmd->save();
         }
         $odroidc2ups3Cmd->event($resultat);
