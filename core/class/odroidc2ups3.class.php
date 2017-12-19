@@ -96,8 +96,54 @@ class odroidc2ups3 extends eqLogic {
      */
     public function updateEtat() {
         
-		 //$pid=trim( shell_exec ('ps ax | grep "apcups" | grep -v "grep" | wc -l'));
-		 $resultat=shell_exec ('sh /var/www/html/plugins/odroidc2ups3/3rparty/ups3.sh');
+		
+		//Vérification de la présence des ports GPIO (odroid C1 et C2)
+		$resultat='';
+		
+		if (file_exists('/sys/class/gpio/gpio88')) // C1 PIN 11 AC_OK
+		{
+			$resultat='GPIO';	
+		}
+		
+		
+		if (file_exists('/sys/class/gpio/gpio247')) // C2 PIN 11 AC_OK
+		{
+			$resultat='GPIO';
+		}
+		
+		if (file_exists('/sys/class/gpio/gpio116')) // C1 PIN 13 BAT_OK
+		{
+			$resultat='GPIO';
+		}
+		if (file_exists('/sys/class/gpio/gpio239')) // C2 PIN 13 BAT_OK
+		{
+			$resultat='GPIO';
+		}
+		if (file_exists('/sys/class/gpio/gpio115')) // C1 PIN 15 POWER_LATCH
+		{
+			$resultat='GPIO';
+		}
+		if (file_exists('/sys/class/gpio/gpio225')) // C2 PIN 26 POWER_LATCH
+		{
+			$resultat='GPIO';
+		}
+		
+		 
+		 
+		 if ($resultat=='')
+		 {
+			// Lancement de la commande shell pour récupérer l'état de la batterie.
+			$resultat='BATTERIE NON PRESENTE';
+		 }
+		 else
+		 {
+			// Lancement de la commande shell pour récupérer l'état de la batterie.
+			$resultat=shell_exec ('sh /var/www/html/plugins/odroidc2ups3/3rparty/ups3.sh');
+		 }
+			 
+			  
+
+		
 		log::add('odroidc2ups3', 'debug', 'resultat :'.$resultat);
         log::add('odroidc2ups3', 'debug', 'ETAT DE LA BATTERIE : '.$resultat);
 		

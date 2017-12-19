@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <info>
     <id>odroidc2ups3</id>
-    <name>odroidc2ups3</name>
+    <name>ODROID UPS3</name>
     <description>Plugin odroidc2ups3</description>
     <icon>icon jeedom-thermo-chaud</icon>
     <licence>AGPL</licence>
