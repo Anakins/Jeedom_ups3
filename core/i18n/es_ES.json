@@ -1,13 +1,13 @@
 {
-    "plugins\/horoscope\/plugin_info\/info.xml": {
+    "plugins\/odroidc2ups3\/plugin_info\/info.xml": {
         "Plugin odroidc2ups3 .....": "Plugin odroidc2ups3 .....",
         "Aucune": "Aucune"
     },
-    "plugins\/horoscope\/plugin_info\/configuration.php": {
+    "plugins\/odroidc2ups3\/plugin_info\/configuration.php": {
         "Fréquence de recuperation des données": "Fréquence de recuperation des données",
         "Toutes les 1 minute (par défaut)": "Toutes les 1 minute (par défaut)"
     },
-    "plugins\/horoscope\/desktop\/php\/horoscope.php": {
+    "plugins\/odroidc2ups3\/desktop\/php\/odroidc2ups3.php": {
         "Ajouter un template": "Ajouter un template",
         "Rechercher": "Rechercher",
         "Mes odroidc2ups3": "Mes odroidc2ups3",
@@ -21,7 +21,7 @@
         "Signe": "Signe",
         "Activer": "Activer",
         "Visible": "Visible",
-        "horoscope": "horoscope",
+        "odroidc2ups3": "odroidc2ups3",
         "Commandes": "Commandes",
         "Nom": "Nom",
         "Type": "Type",
@@ -33,12 +33,11 @@
         "Equipement": "Equipement",
         "Paramètres": "Paramètres"
     },
-    "plugins\/horoscope\/core\/class\/horoscope.class.php": {
-        "horoscopeDuJour": "horoscopeDuJour",
+    "plugins\/odroidc2ups3\/core\/class\/odroidc2ups3.class.php": {
         "Etat": "Etat",
 
     },
-    "plugins\/horoscope\/desktop\/js\/horoscope.js": {
+    "plugins\/odroidc2ups3\/desktop\/js\/odroidc2ups3.js": {
         "Nom": "Nom",
         "Tester": "Tester",
         "Afficher": "Afficher"
