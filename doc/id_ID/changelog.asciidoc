@@ -1,9 +1,0 @@
-Versions 1.0 …​ 1.06 : 18 décembre 2017 - 18 décembre 2017
---
-* Version intiales du plugin.
-
-
-Version 1.00: 18 décembre 2017
---
-* •Sortie offcielle
-

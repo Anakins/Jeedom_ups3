@@ -1,7 +1,0 @@
-=== odroidc2ups3
-
-Plugin permettant de visualiser l'état de la batterie UPS3 branchée sur un ocroid C1, C1+ ou C2.
-
-En cas de courant inférieur à 3,7V alors l'os est arrêté proprement (script disponible sur le site hardkernel).
-
-Vous pouvez récupérer l'état du widget pour lancer des scénarios en cas de coupure de courant par exemple.
