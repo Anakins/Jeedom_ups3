@@ -21,7 +21,7 @@ $eqLogics = eqLogic::byType('odroidc2ups3');
     </div>
 
     <div class="col-lg-10 col-md-9 col-sm-8 eqLogicThumbnailDisplay" style="border-left: solid 1px #EEE; padding-left: 25px;">
-        <legend>{{Mes odroidc2ups3s}}
+        <legend>{{Mes UPS3}}
         </legend>
         <legend><i class="fa fa-cog"></i>  {{Gestion}}</legend>
         <div class="eqLogicThumbnailContainer">
@@ -40,7 +40,7 @@ $eqLogics = eqLogic::byType('odroidc2ups3');
             </div>
         </div>
 
-        <legend><i class="fa fa-table"></i> {{Mes odroidc2ups3s}}</legend>
+        <legend><i class="fa fa-table"></i> {{Mes UPS3}}</legend>
         <div class="eqLogicThumbnailContainer">
 <?php foreach ($eqLogics as $eqLogic) : $opacity = ($eqLogic->getIsEnable()) ? '' : jeedom::getConfiguration('eqLogic:style:noactive'); ?>
             <div class="eqLogicDisplayCard cursor" data-eqLogic_id="<?= $eqLogic->getId() ?>" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px; <?= $opacity ?>">
