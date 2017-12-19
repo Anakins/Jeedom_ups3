@@ -1,6 +1,7 @@
 
 .Des questions ?
 --
-Aucun pour l'instant.
+Comment la batterie est-elle détectée ?
+=> En testant l'éxistance des dossiers utilisés par les ports GPIO
 --
 
