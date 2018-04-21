@@ -97,7 +97,7 @@ class odroidc2ups3 extends eqLogic {
     public function updateEtat() {
         
 		log::add('odroidc2ups3', 'debug', '-> Lancement de ups3.sh pour récupérer l\'état de la batterie.');
-		shell_exec ('sh /var/www/html/plugins/odroidc2ups3/3rparty/ups3.sh');
+		shell_exec ('sudo sh /var/www/html/plugins/odroidc2ups3/3rparty/ups3.sh');
 		
 		//Vérification de la présence des ports GPIO (odroid C1 et C2)
 		$resultat='';
@@ -143,7 +143,7 @@ class odroidc2ups3 extends eqLogic {
 		 {
 			// Lancement de la commande shell pour récupérer l'état de la batterie.
 			log::add('odroidc2ups3', 'debug', '-> Etat trouvé.');
-			$resultat=shell_exec ('sh /var/www/html/plugins/odroidc2ups3/3rparty/ups3.sh');
+			$resultat=shell_exec ('sudo sh /var/www/html/plugins/odroidc2ups3/3rparty/ups3.sh');
 		 }
 			 
 			  
